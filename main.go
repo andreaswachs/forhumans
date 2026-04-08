@@ -22,6 +22,7 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for scanner.Scan() {
+		scanner.Buffer(make([]byte, 0), 10485760) // 10 MB buffer size
 		line := scanner.Bytes()
 		if len(line) == 0 {
 			continue
