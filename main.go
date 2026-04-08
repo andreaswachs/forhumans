@@ -20,9 +20,9 @@ func main() {
 	}
 	f := formatter.NewWithOptions(opts)
 	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Buffer(make([]byte, 0), 10485760) // 10 MB buffer size
 
 	for scanner.Scan() {
-		scanner.Buffer(make([]byte, 0), 10485760) // 10 MB buffer size
 		line := scanner.Bytes()
 		if len(line) == 0 {
 			continue
